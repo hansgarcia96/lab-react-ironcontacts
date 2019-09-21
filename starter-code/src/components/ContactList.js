@@ -6,33 +6,33 @@ class ContactList extends React.Component {
     super(props);
     this.state = {
       firstFiveList: contacts.slice(0, 5),
-      list : contacts.slice(5)
+      list: contacts.slice(5)
     };
   }
 
   showContacts = () => {
     return this.state.firstFiveList.map((eachContact, index) => {
       return (
-        <tr>
-          <td>
-            <img
-              src={eachContact.pictureUrl}
-              alt="imgBelongsHere"
-              height="42"
-            />
-          </td>
-          <td>{eachContact.name}</td>
-          <td>{eachContact.popularity}</td>
-          <td>
-            <button
-              onClick={() => {
-                this.deleteContact(index);
-              }}
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
+          <tr key={index}>
+            <td>
+              <img
+                src={eachContact.pictureUrl}
+                alt="imgBelongsHere"
+                height="100px"
+              />
+            </td>
+            <td>{eachContact.name}</td>
+            <td>{eachContact.popularity}</td>
+            <td>
+              <button
+                onClick={() => {
+                  this.deleteContact(index);
+                }}
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
       );
     });
   };
@@ -43,7 +43,7 @@ class ContactList extends React.Component {
     copiedList.splice(index, 1);
 
     this.setState({
-        firstFiveList: copiedList
+      firstFiveList: copiedList
     });
   };
 
@@ -51,15 +51,14 @@ class ContactList extends React.Component {
     // e.preventDefault();
 
     let allContactsList = [...this.state.list];
-    let firstFive = [...this.state.firstFiveList]
+    let firstFive = [...this.state.firstFiveList];
 
     let randomIndex = Math.floor(Math.random() * allContactsList.length - 1);
-    
 
     firstFive.push(allContactsList[randomIndex]);
 
     this.setState({
-        firstFiveList: firstFive
+      firstFiveList: firstFive
     });
   };
 
@@ -77,7 +76,7 @@ class ContactList extends React.Component {
     });
 
     this.setState({
-        firstFiveList: copiedList
+      firstFiveList: copiedList
     });
   };
 
@@ -94,14 +93,20 @@ class ContactList extends React.Component {
       return 0;
     });
     this.setState({
-        firstFiveList: copiedList
+      firstFiveList: copiedList
     });
   };
 
   render() {
     return (
-      <div>
-        <h2>Ironcontacts</h2>
+      <div
+        style={{
+          width: "75%",
+          margin: "10px auto",
+          padding: "5px"
+        }}
+      >
+        <h2>IronContacts</h2>
 
         <button
           onClick={() => {
@@ -129,7 +134,7 @@ class ContactList extends React.Component {
 
         <table>
           <thead>
-            <tr>
+            <tr class="tableHeader">
               <th>Picture</th>
               <th>Name</th>
               <th>Popularity</th>
