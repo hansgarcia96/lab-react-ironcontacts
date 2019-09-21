@@ -99,13 +99,7 @@ class ContactList extends React.Component {
 
   render() {
     return (
-      <div
-        style={{
-          width: "75%",
-          margin: "10px auto",
-          padding: "5px"
-        }}
-      >
+      <div className="entireTable">
         <h2>IronContacts</h2>
 
         <button
@@ -134,7 +128,7 @@ class ContactList extends React.Component {
 
         <table>
           <thead>
-            <tr class="tableHeader">
+            <tr className="tableHeader">
               <th>Picture</th>
               <th>Name</th>
               <th>Popularity</th>
@@ -143,6 +137,7 @@ class ContactList extends React.Component {
           </thead>
           <tbody>{this.showContacts()}</tbody>
         </table>
+
       </div>
     );
   }
